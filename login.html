@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Toastr.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <!-- Custom styles -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      width: 400px; /* Increased width */
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .form-container form .form-group {
+      margin-bottom: 20px;
+    }
+    .form-container form .form-control {
+      border-radius: 5px;
+    }
+    .form-container form .btn-primary {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .form-container form .btn-primary:hover {
+      background-color: #007bff;
+    }
+    .form-container form .signup-link {
+      text-align: center;
+    }
+    .form-container form .signup-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .form-container form .signup-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="signup-link mt-3">
+        Don't have an account? <a href="signup.html">Sign Up</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Toastr.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  <!-- Script for email validation and toastr notifications -->
+  <script>
+    $(document).ready(function() {
+      // Function to validate email using regex
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+    
+      // Event listener for form submission
+      $('#loginForm').submit(function(event) {
+        event.preventDefault();
+        const email = $('#exampleInputEmail1').val();
+        const password = $('#exampleInputPassword1').val();
+        
+        if (email === 'test@example.com' && password === 'password') {
+          // Login successful
+          toastr.success('Login successful!', 'Success');
+        } else {
+          // Login failed
+          toastr.error('Invalid email or password. Please try again.', 'Error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
